@@ -42,7 +42,7 @@ func serverStart()  {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
-		log.Println("New websocket connection attempt on server A")
+
 		utils.HandleConnections(w, r)
 	})
 
@@ -70,12 +70,11 @@ func connectServer()  {
 	conn, err := utils.ConnectToWebSocketServer("localhost:8081")
 
 	if err != nil {
-		log.Printf("Could not connect to server A: %v", err.Error())
+		log.Printf("Could not connect to server B: %v", err.Error())
 	}
 
 	log.Printf("Connected Client: %s", conn.RemoteAddr())
 
-	// err = conn.WriteMessage(websocket.TextMessage, []byte("Hello to from server A"))
 
 	if err !=nil {
 		log.Printf("Could not write message to server %s", err.Error())
@@ -90,7 +89,7 @@ func connectServer()  {
 
 			fmt.Printf("What would you like to do now that you are connected? 😁\n")
 			fmt.Printf("1. To send message to server: 1 <add message> 💬\n")
-			fmt.Printf("2. Exit server 🗑 \n")
+			fmt.Printf(" ctrl + C exits the server 🗑 \n")
 
 
 			fmt.Println("Enter choice ")
@@ -110,7 +109,7 @@ func connectServer()  {
 
 			switch choice {
 			case "1":
-				fmt.Println("You want to send a message 📁")
+				fmt.Println("Message sent ➡ ")
 				conn.WriteMessage(websocket.TextMessage, []byte(message))
 
 			case "2":

@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"net/url"
@@ -44,8 +43,6 @@ func HandleConnections(w http.ResponseWriter, r *http.Request) {
 
 	log.Printf("Client connected : %s", conn.RemoteAddr().String())
 
-	// buffer := make([]byte, 1024)
-
 	for {
 
 		messageType, message, err := conn.ReadMessage()
@@ -55,18 +52,22 @@ func HandleConnections(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	
-		log.Printf("MessageType: %v, messageReceived: %s", messageType, string(message))
+		log.Printf("MessageType: %v, Received message from client: %s, message: %s", messageType,conn.RemoteAddr() ,string(message))
+
+		// send message back to sender
+		err = conn.WriteMessage(messageType, message)
+
+		if err != nil {
+			log.Println("Could not send the message back")
+		}
 
 
 	}
-
 
 }
 
 func ConnectToWebSocketServer(serverURL string) (*websocket.Conn, error) {
 	u := url.URL{Scheme: "ws", Host: serverURL, Path: "/ws"} //parse url 
-
-	fmt.Println(u.String())
 
 	log.Printf("Connecting to %s", u.String())
 
