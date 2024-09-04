@@ -30,7 +30,7 @@ var upgrader =  websocket.Upgrader{
 	ReadBufferSize: 1024,
 	WriteBufferSize: 1024,
 
-	// check origin og connection allows all connections
+	// check origin of connection allows all connections
 	CheckOrigin: func(r *http.Request) bool {
 		return true
 	},
