@@ -3,10 +3,10 @@ package main
 import (
 	"log"
 	"net/http"
-	"time"
+	// "time"
 
 	"github.com/Shoetan/utils"
-	"github.com/gorilla/websocket"
+	// "github.com/gorilla/websocket"
 )
 
 func main() {
@@ -32,25 +32,25 @@ func main() {
 	}()
 
 
-	time.Sleep(10 * time.Second) // wait for 5 seconds before trying to connect to another websocket
+	// time.Sleep(10 * time.Second) // wait for 5 seconds before trying to connect to another websocket
 
 
 
-	conn, err := utils.ConnectToWebSocketServer("localhost:8080")
+	// conn, err := utils.ConnectToWebSocketServer("localhost:8080")
 
-	if err != nil {
-		log.Printf("Could not connect to server A: %v", err.Error())
-	}
+	// if err != nil {
+	// 	log.Printf("Could not connect to server A: %v", err.Error())
+	// }
 
-	log.Printf("Connected Client: %s", conn.RemoteAddr().Network())
+	// log.Printf("Connected Client: %s", conn.RemoteAddr().Network())
 
-	err = conn.WriteMessage(websocket.TextMessage, []byte("Hello to another socket"))
+	// err = conn.WriteMessage(websocket.TextMessage, []byte("Hello from server B"))
 
-	if err !=nil {
-		log.Printf("Could not write message to server %s", err.Error())
-	}
+	// if err !=nil {
+	// 	log.Printf("Could not write message to server %s", err.Error())
+	// }
 
-	select{}
+	select{} //keep it running 
 
 
 }

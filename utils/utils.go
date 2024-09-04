@@ -44,13 +44,22 @@ func HandleConnections(w http.ResponseWriter, r *http.Request) {
 
 	log.Printf("Client connected : %s", conn.RemoteAddr().String())
 
-	messageType, message, err := conn.ReadMessage()
+	// buffer := make([]byte, 1024)
 
-	if err != nil {
-		log.Printf("Could not read message from connection %s", err.Error())
+	for {
+
+		messageType, message, err := conn.ReadMessage()
+	
+		if err != nil {
+			log.Printf("Could not read message from connection %s", err.Error())
+			return
+		}
+	
+		log.Printf("MessageType: %v, messageReceived: %s", messageType, string(message))
+
+
 	}
 
-	log.Printf("MessageType: %v, messageReceived: %s", messageType, string(message))
 
 }
 
