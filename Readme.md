@@ -25,8 +25,7 @@ Both servers run on defined port servers A: 8080 and B: 8081 using TCP protocol.
 * A client has been connected to server A and server B  
 ![client](./Resources/client.png)
 * To send a message from a connected client to a server use the command line and enter ``1 <your message>``. In the background your message is stripped from your command
-
-
+![strip](./Resources/strip.png)
 
 
 ## OBSERVATIONS AND CONTRAINTS
