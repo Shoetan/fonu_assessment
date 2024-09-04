@@ -21,10 +21,10 @@ Both servers run on defined port servers A: 8080 and B: 8081 using TCP protocol.
 ![terminal setup](./Resources/start.png)
 * To start both servers run ``go run main.go start`` on both terminals. I am using Cobra to build this as a CLI application. NB: On starting the servers it waits for 10 seconds before trying to establish a connection to the other server. This just helps to make sure both servers are running else it terminates.
 * The servers will come up and you will have an interface that looks like below
-![servers up](./Resources/connect.png)
-* A client has been connected to server A and server B
-  
+![servers up](./Resources/connetion.png)
+* A client has been connected to server A and server B  
 ![client](./Resources/client.png)
+* To send a message from a connected client to a server use the command line and enter ``1 <your message>``. In the background your message is stripped from your command
 
 
 
