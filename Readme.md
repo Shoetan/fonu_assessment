@@ -54,4 +54,4 @@ Most important codes are found in the utils folder and tests can be run
 ``go test -run TestHandleConnections``
 
 ## OBSERVATIONS
-* The concept of connecting servers ( in this context both servers act as clients to each other) while this is possible this approach is not recommended as per best practices and will lead to very complex or even spaghetti code spent a lot time trying to get it to work. WebSocket servers usually wait for clients to connect to them. They don't usually start the connection themselves. If you have two servers that connect, it's like mixing up who is the server and who is the client. This can make things more complicated to build and fix later.
+* The concept of connecting servers ( in this context both servers act as clients to each other) while this is possible this approach is not recommended as per best practices and will lead to very complex or even spaghetti code spent a lot time trying to get it to work. WebSocket servers usually wait for clients to connect to them. They don't usually start the connection themselves. Trying to connect them together will only confuse their roles.
