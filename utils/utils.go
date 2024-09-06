@@ -178,3 +178,13 @@ func DirectMessage(message []byte, conn *websocket.Conn)  {
 		log.Printf("Error sending direct message to server %s: Error: %s", conn.LocalAddr(), err )
 	}
 }
+
+func IsValidMessage(message []byte) bool {
+	// Example: check if the message is non-empty and starts with a specific keyword
+	if len(message) == 0 {
+			return false
+	}
+	
+	return true
+}
+

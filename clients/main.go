@@ -55,11 +55,15 @@ func connectToServer()  {
 			for {
 				_,message, err := conn.ReadMessage() //read message
 				if err != nil {
-					log.Println("Error reading from server:", string(message))
+					log.Printf("Error reading from server %v:", err)
 
 					exitChan <- true
 
 					return
+				}
+
+				if err == nil && !utils.IsValidMessage(message){
+					log.Println("Invalid message type") // check if messagge type is valid or not.
 				}
 
 				fmt.Printf("Message recieved from server: %s", string(message))
