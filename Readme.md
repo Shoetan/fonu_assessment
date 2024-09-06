@@ -3,6 +3,8 @@ One of the drawbacks of HTTP is that it does not support real-time communication
 
 ## ARCHITECTURE
 Here I have two distant servers called server A and server B respectively. Starting this are just regular HTTP servers but are upgraded to a web socket server
+
+Clients can connect to the TCP servers via the command this way the TCP server can be interacted with.
 ```
 var upgrader =  websocket.Upgrader{
 	ReadBufferSize: 1024,
