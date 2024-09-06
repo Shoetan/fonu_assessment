@@ -45,6 +45,10 @@ Both servers run on defined port servers A: 8080 and B: 8081 using TCP protocol.
 
 ![receive message](./Resources/LOOP2.png)
 
+* The server also checks if the message is valid or not
+  
+![receive message](./Resources/invalid.png) 
+
 * The servers and runtime are running concurrently in different go routines hence it does not time out until you send a close signal with ``ctrl + c``
 
 ## TESTING
