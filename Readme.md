@@ -24,20 +24,20 @@ Both servers run on defined port servers A: 8080 and B: 8081 using TCP protocol.
 * You have the setup like  this
 ![terminal setup](./Resources/start.png)
 
-* To start both servers run ``go run main.go start`` on both terminals. I am using Cobra to build this as a CLI application. NB: On starting the servers it waits for 10 seconds before trying to establish a connection to the other server. This just helps to make sure both servers are running else it terminates.
+* To start both servers run ``go run main.go start`` on both terminals. I am using Cobra to build this as a CLI application. NB: On starting the servers it waits for 10 seconds before trying to establish a connection to the other server. This helps to make sure both servers are running, or else it terminates.
   
 * The servers will come up and you will have an interface that looks like below
 ![servers up](./Resources/connetion.png)
 
-* A client has been connected to server A and server B  
+* To connect a client to either server A or server B  navigate to the clients folder ``cd clients`` and run ``go run main.go`` to connect to an already specified server
 ![client](./Resources/client.png)
 
-* To send a message from a connected client to a server use the command line and enter ``1 <your message>``. In the background, your message is stripped from your command
+* To send a broadcast message from a connected client to a server use the command line and enter ``1 <your message>``. In the background, your message is stripped from your command
 ![strip](./Resources/strip.png)
 
 * In action this looks like writing the below
 
-![send message](./Resources/LOOP1.png)
+![send message](./Resources/broad.png)
 
 * The server will receive your message and display it
 
@@ -50,4 +50,4 @@ Both servers run on defined port servers A: 8080 and B: 8081 using TCP protocol.
 Most important codes are found in the utils folder and tests can be run with ``go test -v ./utils/utils_test.go``
 
 ## OBSERVATIONS
-* The concept of connecting servers ( in this context both servers act as clients to each other) while this is possible this approach is not recommended and will lead to very complex or even spaghetti code. WebSocket servers usually wait for clients to connect to them. They don't usually start the connection themselves. If you have two servers that connect, it's like mixing up who is the server and who is the client. This can make things more complicated to build and fix later.
+* The concept of connecting servers ( in this context both servers act as clients to each other) while this is possible this approach is not recommended as per best practices and will lead to very complex or even spaghetti code spent a lot time trying to get it to work. WebSocket servers usually wait for clients to connect to them. They don't usually start the connection themselves. If you have two servers that connect, it's like mixing up who is the server and who is the client. This can make things more complicated to build and fix later.
